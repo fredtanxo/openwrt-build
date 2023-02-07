@@ -62,5 +62,5 @@ jobs:
       - name : Upload artifact
         uses: actions/upload-artifact@v3
         with:
-          name: openwrt-${{ env.VERSION }}-{{ env.COMMIT }}
+          name: openwrt-${{ env.VERSION }}-${{ env.COMMIT }}
           path: openwrt/bin/targets
