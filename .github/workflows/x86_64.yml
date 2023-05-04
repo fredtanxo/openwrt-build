@@ -57,8 +57,14 @@ jobs:
         run: make -j $(($(nproc)+1)) download
 
       - name: Build firmware image
+        id: build
         working-directory: openwrt
         run: make -j $(($(nproc)+1))
+
+      - name: Rebuild on error
+        if: ${{ failure() && steps.build.conclusion == 'failure' }}
+        working-directory: openwrt
+        run: make -j1 V=s
 
       - name : Upload artifact
         uses: actions/upload-artifact@v3
