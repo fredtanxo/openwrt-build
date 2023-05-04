@@ -9,3 +9,7 @@ sed -i '/option forward\t\tREJECT.*/a\\toption fullcone\t\t1' ./openwrt/package/
 # Change default timezone to Asia/Shanghai
 sed -i "s/timezone='.*'/timezone='CST-8'/g" ./openwrt/package/base-files/files/bin/config_generate
 sed -i "/.*ttylogin='0'.*/i\\\t\tset system.@system[-1].zonename='Asia/Shanghai'" ./openwrt/package/base-files/files/bin/config_generate
+
+# Download custom packages
+git clone --depth=1 -b master https://github.com/vernesong/OpenClash.git
+cp -r ./OpenClash/luci-app-openclash ./openwrt/package/
