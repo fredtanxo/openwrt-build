@@ -22,7 +22,7 @@ jobs:
           git clone https://git.openwrt.org/openwrt/openwrt.git
           echo "VERSION=$(cat ./openwrt-build/version)" >> $GITHUB_ENV
           cd openwrt
-          git checkout ${{ env.VERSION }}
+          git checkout "${{ env.VERSION }}"
           echo "COMMIT=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
 
       - name: Setup build system
